@@ -1,225 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScuolaNovara - Portale</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .header {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .header h1 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin: 0 0 15px 0;
-        }
-        .header p {
-            color: #666;
-            font-size: 1.2em;
-            margin: 0;
-        }
-        .section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .section h2 {
-            color: #333;
-            margin-top: 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-        .links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .link-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            transition: transform 0.3s;
-        }
-        .link-box:hover {
-            transform: translateY(-5px);
-        }
-        .link-box .icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        .link-box .title {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .info-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        .info-box h3 {
-            color: #667eea;
-            margin-top: 0;
-        }
-        .info-box p {
-            color: #555;
-            margin: 5px 0;
-        }
-        .event {
-            background: #f8f9fa;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        .event-title {
-            color: #333;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        .event-date {
-            color: #667eea;
-            margin: 5px 0;
-        }
-        .event-desc {
-            color: #666;
-        }
-        .doc-link {
-            display: block;
-            padding: 12px;
-            color: #667eea;
-            text-decoration: none;
-            border-bottom: 1px solid #eee;
-        }
-        .doc-link:hover {
-            background: #f8f9fa;
-        }
-        .footer {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sito Gruppo - Docs & Calendar</title>
+
+  <!-- FullCalendar CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6/main.min.css" rel="stylesheet"/>
+
+  <!-- CSS base rapido -->
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --accent:#2563eb; --muted:#6b7280;
+      --radius:12px; --gap:18px;
+    }
+    *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    body{margin:0;background:var(--bg);color:#111;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;}
+    h1{font-size:1.25rem;margin:0}
+    .container{display:grid;grid-template-columns:1fr 360px;gap:var(--gap);align-items:start;}
+    @media (max-width:900px){ .container{grid-template-columns:1fr} }
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 6px 18px rgba(15,23,42,0.06);}
+    .small{font-size:0.9rem;color:var(--muted)}
+    /* file list */
+    .files li{margin:8px 0;display:flex;justify-content:space-between;gap:8px}
+    .btn{background:var(--accent);color:white;border:none;padding:8px 10px;border-radius:8px;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,0.12)}
+    /* calendar */
+    #calendar{max-width:100%;margin-top:12px}
+    /* links */
+    .links-list{display:flex;flex-direction:column;gap:8px}
+    .link-item{padding:8px;border-radius:8px;background:#f8fafc}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📚 ScuolaNovara</h1>
-            <p>Portale aggiornamento attività e documenti</p>
-        </div>
+  <header>
+    <h1>Sito Gruppo — Documenti, Calendario & Link</h1>
+    <div class="small">Condivisione semplice per il tuo gruppo</div>
+  </header>
 
-        <div class="section">
-            <h2>🔗 Link Principali</h2>
-            <div class="links">
-                <a href="https://drive.google.com" class="link-box" target="_blank">
-                    <div class="icon">📁</div>
-                    <div class="title">Google Drive</div>
-                    <div>Documenti condivisi</div>
-                </a>
-                <a href="https://calendar.google.com" class="link-box" target="_blank">
-                    <div class="icon">📅</div>
-                    <div class="title">Calendario</div>
-                    <div>Eventi e scadenze</div>
-                </a>
-                <a href="#" class="link-box">
-                    <div class="icon">🎓</div>
-                    <div class="title">Registro</div>
-                    <div>Accesso registro</div>
-                </a>
-                <a href="mailto:info@esempio.it" class="link-box">
-                    <div class="icon">✉️</div>
-                    <div class="title">Email</div>
-                    <div>Contattaci</div>
-                </a>
-            </div>
-        </div>
+  <div class="container">
+    <!-- LEFT: principale -->
+    <div>
+      <!-- Upload -->
+      <div class="card" id="uploadCard">
+        <h3>Carica documento</h3>
+        <p class="small">PDF, immagini, note (max size controllato dal servizio)</p>
+        <form id="uploadForm">
+          <input id="fileInput" type="file" required />
+          <div style="height:12px"></div>
+          <button class="btn" type="submit">Carica</button>
+          <div id="uploadMsg" class="small" style="margin-top:8px"></div>
+        </form>
 
-        <div class="section">
-            <h2>ℹ️ Informazioni Utili</h2>
-            <div class="info-grid">
-                <div class="info-box">
-                    <h3>📍 Sede</h3>
-                    <p>Via Esempio 123</p>
-                    <p>28100 Novara</p>
-                </div>
-                <div class="info-box">
-                    <h3>🕐 Orari</h3>
-                    <p>Lun-Ven: 8:00-14:00</p>
-                    <p>Mar-Gio: 15:00-17:00</p>
-                </div>
-                <div class="info-box">
-                    <h3>📞 Contatti</h3>
-                    <p>Tel: 0321 123456</p>
-                    <p>Email: info@esempio.it</p>
-                </div>
-                <div class="info-box">
-                    <h3>🌐 Web</h3>
-                    <p><a href="#" style="color: #667eea;">www.scuolanovara.it</a></p>
-                </div>
-            </div>
-        </div>
+        <hr style="margin:12px 0">
 
-        <div class="section">
-            <h2>📌 Prossimi Eventi</h2>
-            <div class="event">
-                <div class="event-title">🎉 Riunione Genitori</div>
-                <div class="event-date">Lunedì 15 Ottobre 2025 - ore 17:00</div>
-                <div class="event-desc">Assemblea generale con presentazione programma didattico</div>
-            </div>
-            <div class="event">
-                <div class="event-title">📚 Consegna Pagelle</div>
-                <div class="event-date">Venerdì 25 Ottobre 2025</div>
-                <div class="event-desc">Colloqui individuali con i docenti</div>
-            </div>
-            <div class="event">
-                <div class="event-title">🎭 Gita Scolastica</div>
-                <div class="event-date">Sabato 2 Novembre 2025</div>
-                <div class="event-desc">Visita al Museo della Scienza - Milano</div>
-            </div>
-        </div>
+        <h4>Documenti</h4>
+        <ul id="fileList" class="files small"></ul>
+      </div>
 
-        <div class="section">
-            <h2>📄 Documenti</h2>
-            <a href="#" class="doc-link">📋 Regolamento d'Istituto 2024/2025</a>
-            <a href="#" class="doc-link">📝 Modulo richiesta permessi</a>
-            <a href="#" class="doc-link">🏥 Certificati medici</a>
-            <a href="#" class="doc-link">📖 Piano dell'Offerta Formativa</a>
-            <a href="#" class="doc-link">🍎 Menu mensa</a>
-        </div>
+      <!-- Calendar -->
+      <div class="card" style="margin-top:16px">
+        <h3>Calendario condiviso</h3>
+        <div id="calendar"></div>
 
-        <div class="footer">
-            <p>Ultimo aggiornamento: 3 Ottobre 2025</p>
-        </div>
+        <hr style="margin:12px 0">
+        <form id="eventForm" class="small">
+          <input id="title" placeholder="Titolo evento" required />
+          <input id="start" type="datetime-local" required />
+          <input id="end" type="datetime-local" />
+          <div style="height:8px"></div>
+          <button class="btn" type="submit">Aggiungi evento</button>
+        </form>
+      </div>
     </div>
+
+    <!-- RIGHT: sidebar -->
+    <aside>
+      <div class="card">
+        <h4>Link utili</h4>
+        <div id="linksContainer" class="links-list small"></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h4>Note</h4>
+        <p class="small">Per usare questo demo: crea progetto Supabase e sostituisci le costanti SUPABASE_URL/SUPABASE_KEY nel codice sottostante.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- FullCalendar + Supabase SDK (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6/main.min.js"></script>
+  <script type="module">
+    // IMPORT Supabase come module (CDN +esm)
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    // ========== CONFIG: metti qui i tuoi valori ==========
+    const SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co'
+    const SUPABASE_ANON = 'YOUR-ANON-KEY'
+    // =====================================================
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON)
+
+    // ---------- FILE UPLOAD ----------
+    const uploadForm = document.getElementById('uploadForm')
+    const fileInput = document.getElementById('fileInput')
+    const uploadMsg = document.getElementById('uploadMsg')
+    const fileList = document.getElementById('fileList')
+
+    async function listFiles(){
+      fileList.innerHTML = '<li class="small">Caricamento...</li>'
+      const { data, error } = await supabase.storage.from('documents').list('', { limit: 200 })
+      if(error){ fileList.innerHTML = '<li class="small">Errore nel listing</li>'; console.error(error); return }
+      if(!data || data.length===0){ fileList.innerHTML = '<li class="small">Nessun file</li>'; return }
+      fileList.innerHTML = ''
+      data.forEach(f=>{
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        // public URL (se bucket pubblico)
+        const { data: pub } = supabase.storage.from('documents').getPublicUrl(f.name)
+        a.href = pub.publicUrl
+        a.textContent = f.name
+        a.target = '_blank'
+        li.appendChild(a)
+        const del = document.createElement('button')
+        del.className = 'btn ghost'
+        del.textContent = 'Elimina'
+        del.onclick = async ()=>{
+          await supabase.storage.from('documents').remove([f.name])
+          listFiles()
+        }
+        li.appendChild(del)
+        fileList.appendChild(li)
+      })
+    }
+
+    uploadForm.addEventListener('submit', async (e)=>{
+      e.preventDefault()
+      const file = fileInput.files[0]
+      if(!file){ uploadMsg.textContent = 'Seleziona un file'; return }
+      uploadMsg.textContent = 'Caricamento in corso...'
+      const path = `${Date.now()}_${file.name}`
+      const { data, error } = await supabase.storage.from('documents').upload(path, file)
+      if(error){ uploadMsg.textContent = 'Errore: '+error.message; console.error(error); return }
+      uploadMsg.textContent = 'Caricato!'
+      fileInput.value = ''
+      listFiles()
+    })
+
+    // ---------- CALENDAR ----------
+    let calendar
+    async function initCalendar(){
+      const calendarEl = document.getElementById('calendar')
+      calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: true,
+        headerToolbar: { left:'prev,next today', center:'title', right:'dayGridMonth,timeGridWeek,listWeek' },
+      })
+      calendar.render()
+      await loadEventsIntoCalendar()
+    }
+
+    async function loadEventsIntoCalendar(){
+      const { data, error } = await supabase.from('events').select('*').order('start', {ascending:true})
+      if(error){ console.error(error); return }
+      calendar.removeAllEvents()
+      data.forEach(ev=>{
+        calendar.addEvent({ id:ev.id, title:ev.title, start:ev.start, end:ev.end })
+      })
+    }
+
+    document.getElementById('eventForm').addEventListener('submit', async (e)=>{
+      e.preventDefault()
+      const title = document.getElementById('title').value
+      const start = document.getElementById('start').value
+      const end = document.getElementById('end').value || null
+      if(!title || !start) return
+      const { data, error } = await supabase.from('events').insert([{ title, start, end }]).select()
+      if(error){ console.error(error); return }
+      // aggiungi al calendario e svuota form
+      calendar.addEvent({ id:data[0].id, title:data[0].title, start:data[0].start, end:data[0].end })
+      document.getElementById('title').value = ''
+      document.getElementById('start').value = ''
+      document.getElementById('end').value = ''
+    })
+
+    // ---------- LINKS (static JSON -> potresti anche usare un file links.json) ----------
+    const links = {
+      "Generale":[
+        { "title":"WhatsApp Gruppo","url":"https://chat.whatsapp.com/..." },
+        { "title":"Regole della casa","url":"https://example.com/rules" }
+      ],
+      "Eventi":[
+        { "title":"Prenotazioni","url":"https://example.com/book" }
+      ]
+    }
+    function renderLinks(){
+      const container = document.getElementById('linksContainer')
+      container.innerHTML = ''
+      Object.entries(links).forEach(([cat, arr])=>{
+        const h = document.createElement('div'); h.textContent = cat; h.style.fontWeight='600'; container.appendChild(h)
+        arr.forEach(l=>{
+          const a = document.createElement('a'); a.href=l.url; a.textContent=l.title; a.target='_blank'
+          const d = document.createElement('div'); d.className='link-item'; d.appendChild(a); container.appendChild(d)
+        })
+      })
+    }
+
+    // Inits
+    await listFiles()
+    await initCalendar()
+    renderLinks()
+  </script>
 </body>
 </html>
