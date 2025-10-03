@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portale Gruppo Scuola Novara</title>
+    <title>ScuolaNovara - Portale</title>
     <style>
         * {
             margin: 0;
@@ -12,90 +12,98 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .header {
             background: white;
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
+            padding: 40px 30px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             text-align: center;
         }
         
         .header h1 {
             color: #667eea;
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         
         .header p {
             color: #666;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            line-height: 1.6;
         }
         
-        .card {
+        .section {
             background: white;
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .card h2 {
+        .section h2 {
             color: #333;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
         }
         
-        .card h2::before {
-            content: '📌';
-            margin-right: 10px;
-            font-size: 1.2em;
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
         
-        .card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .link-button {
-            display: inline-block;
+        .link-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 20px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
+            display: block;
             transition: all 0.3s;
+            text-align: center;
         }
         
-        .link-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .link-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .link-card .title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .link-card .desc {
+            font-size: 0.9em;
+            opacity: 0.9;
         }
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
@@ -110,28 +118,97 @@
         .info-box h3 {
             color: #667eea;
             font-size: 1.1em;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
         
         .info-box p {
             color: #555;
             margin: 0;
+            line-height: 1.6;
+        }
+        
+        .events-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .events-list li {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .events-list .event-title {
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .events-list .event-date {
+            color: #667eea;
+            font-size: 0.95em;
+        }
+        
+        .events-list .event-desc {
+            color: #666;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+        
+        .documents-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .documents-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .documents-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .documents-list a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .documents-list a:hover {
+            color: #764ba2;
+        }
+        
+        .documents-list .doc-icon {
+            margin-right: 10px;
+            font-size: 1.3em;
         }
         
         .footer {
             text-align: center;
             color: white;
             margin-top: 30px;
-            font-size: 0.9em;
+            padding: 20px;
+            font-size: 0.95em;
         }
         
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 1.5em;
+                font-size: 2em;
             }
             
-            .card {
+            .section {
                 padding: 20px;
+            }
+            
+            .links-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -139,66 +216,95 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌟 Portale Gruppo Scuola Novara</h1>
-            <p>Tutte le informazioni utili in un unico posto</p>
+            <h1>📚 ScuolaNovara</h1>
+            <p>Portale aggiornamento attività e documenti</p>
         </div>
         
-        <div class="card">
-            <h2>Link Importanti</h2>
-            <p>Qui trovi i collegamenti più utili per il nostro gruppo</p>
-            <a href="https://esempio.com" class="link-button" target="_blank">📄 Documento Condiviso</a>
-            <a href="https://esempio.com" class="link-button" target="_blank" style="margin-left: 10px;">📅 Calendario Eventi</a>
+        <div class="section">
+            <h2>🔗 Link Principali</h2>
+            <div class="links-container">
+                <a href="https://drive.google.com" class="link-card" target="_blank">
+                    <span class="icon">📁</span>
+                    <div class="title">Google Drive</div>
+                    <div class="desc">Documenti condivisi</div>
+                </a>
+                <a href="https://calendar.google.com" class="link-card" target="_blank">
+                    <span class="icon">📅</span>
+                    <div class="title">Calendario</div>
+                    <div class="desc">Eventi e scadenze</div>
+                </a>
+                <a href="https://esempio.com" class="link-card" target="_blank">
+                    <span class="icon">🎓</span>
+                    <div class="title">Registro</div>
+                    <div class="desc">Accesso al registro</div>
+                </a>
+                <a href="mailto:info@scuolanovara.it" class="link-card">
+                    <span class="icon">✉️</span>
+                    <div class="title">Email</div>
+                    <div class="desc">Contattaci</div>
+                </a>
+            </div>
         </div>
         
-        <div class="card">
-            <h2>Informazioni Utili</h2>
+        <div class="section">
+            <h2>ℹ️ Informazioni Utili</h2>
             <div class="info-grid">
                 <div class="info-box">
-                    <h3>📍 Luogo di Ritrovo</h3>
-                    <p>Inserisci qui l'indirizzo o il luogo abituale</p>
+                    <h3>📍 Sede</h3>
+                    <p>Via Esempio 123<br>28100 Novara</p>
                 </div>
                 <div class="info-box">
-                    <h3>🕐 Orari</h3>
-                    <p>Giorni e orari di riferimento</p>
+                    <h3>🕐 Orari Segreteria</h3>
+                    <p>Lun-Ven: 8:00-14:00<br>Mar-Gio: 15:00-17:00</p>
                 </div>
                 <div class="info-box">
                     <h3>📞 Contatti</h3>
-                    <p>Numeri utili o email di riferimento</p>
+                    <p>Tel: 0321 123456<br>Email: info@scuolanovara.it</p>
                 </div>
                 <div class="info-box">
-                    <h3>💡 Note</h3>
-                    <p>Altre informazioni importanti</p>
+                    <h3>🌐 Sito Web</h3>
+                    <p><a href="https://www.scuolanovara.it" style="color: #667eea; text-decoration: none;">www.scuolanovara.it</a></p>
                 </div>
             </div>
         </div>
         
-        <div class="card">
-            <h2>Prossimi Eventi</h2>
-            <p><strong>🎉 Evento 1:</strong> Descrizione e data</p>
-            <p><strong>🎯 Evento 2:</strong> Descrizione e data</p>
-            <p><strong>🌟 Evento 3:</strong> Descrizione e data</p>
-        </div>
-        
-        <div class="card">
-            <h2>Documenti e Risorse</h2>
-            <p>Materiali, guide e documenti utili per tutti i membri del gruppo</p>
-            <ul style="color: #666; line-height: 1.8; margin-left: 20px;">
-                <li>Regolamento del gruppo</li>
-                <li>Guide e tutorial</li>
-                <li>Archivio foto e video</li>
+        <div class="section">
+            <h2>📌 Prossimi Eventi</h2>
+            <ul class="events-list">
+                <li>
+                    <div class="event-title">🎉 Riunione Genitori</div>
+                    <div class="event-date">Lunedì 15 Ottobre 2025 - ore 17:00</div>
+                    <div class="event-desc">Assemblea generale con presentazione del programma didattico</div>
+                </li>
+                <li>
+                    <div class="event-title">📚 Consegna Pagelle</div>
+                    <div class="event-date">Venerdì 25 Ottobre 2025</div>
+                    <div class="event-desc">Colloqui individuali con i docenti</div>
+                </li>
+                <li>
+                    <div class="event-title">🎭 Gita Scolastica</div>
+                    <div class="event-date">Sabato 2 Novembre 2025</div>
+                    <div class="event-desc">Visita al Museo della Scienza - Milano</div>
+                </li>
             </ul>
         </div>
         
-        <div class="footer">
-            <p>Ultimo aggiornamento: <span id="data"></span></p>
-        </div>
-    </div>
-    
-    <script>
-        // Mostra la data di oggi
-        const oggi = new Date();
-        const opzioni = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('data').textContent = oggi.toLocaleDateString('it-IT', opzioni);
-    </script>
-</body>
-</html>
+        <div class="section">
+            <h2>📄 Documenti e Modulistica</h2>
+            <ul class="documents-list">
+                <li>
+                    <a href="#" target="_blank">
+                        <span class="doc-icon">📋</span>
+                        Regolamento d'Istituto 2024/2025
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <span class="doc-icon">📝</span>
+                        Modulo richiesta permessi
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <span class="doc-icon">🏥</span>
+                        Certific
