@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portale del Gruppo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2::before {
+            content: '📌';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .link-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .info-box p {
+            color: #555;
+            margin: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Portale Gruppo Scuola Novara</h1>
+            <p>Tutte le informazioni utili in un unico posto</p>
+        </div>
+        
+        <div class="card">
+            <h2>Link Importanti</h2>
+            <p>Qui trovi i collegamenti più utili per il nostro gruppo</p>
+            <a href="https://esempio.com" class="link-button" target="_blank">📄 Documento Condiviso</a>
+            <a href="https://esempio.com" class="link-button" target="_blank" style="margin-left: 10px;">📅 Calendario Eventi</a>
+        </div>
+        
+        <div class="card">
+            <h2>Informazioni Utili</h2>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>📍 Luogo di Ritrovo</h3>
+                    <p>Inserisci qui l'indirizzo o il luogo abituale</p>
+                </div>
+                <div class="info-box">
+                    <h3>🕐 Orari</h3>
+                    <p>Giorni e orari di riferimento</p>
+                </div>
+                <div class="info-box">
+                    <h3>📞 Contatti</h3>
+                    <p>Numeri utili o email di riferimento</p>
+                </div>
+                <div class="info-box">
+                    <h3>💡 Note</h3>
+                    <p>Altre informazioni importanti</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Prossimi Eventi</h2>
+            <p><strong>🎉 Evento 1:</strong> Descrizione e data</p>
+            <p><strong>🎯 Evento 2:</strong> Descrizione e data</p>
+            <p><strong>🌟 Evento 3:</strong> Descrizione e data</p>
+        </div>
+        
+        <div class="card">
+            <h2>Documenti e Risorse</h2>
+            <p>Materiali, guide e documenti utili per tutti i membri del gruppo</p>
+            <ul style="color: #666; line-height: 1.8; margin-left: 20px;">
+                <li>Regolamento del gruppo</li>
+                <li>Guide e tutorial</li>
+                <li>Archivio foto e video</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Ultimo aggiornamento: <span id="data"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Mostra la data di oggi
+        const oggi = new Date();
+        const opzioni = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('data').textContent = oggi.toLocaleDateString('it-IT', opzioni);
+    </script>
+</body>
+</html>
