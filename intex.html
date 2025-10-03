@@ -3,213 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScuolaNovara - Portale</title>
+    <title>ScuolaNovara</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
         }
-        
         .container {
             max-width: 900px;
             margin: 0 auto;
         }
-        
         .header {
             background: white;
+            padding: 40px;
             border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
         .header h1 {
             color: #667eea;
             font-size: 2.5em;
-            margin-bottom: 15px;
-            font-weight: 700;
+            margin: 0 0 15px 0;
         }
-        
         .header p {
             color: #666;
             font-size: 1.2em;
-            line-height: 1.6;
+            margin: 0;
         }
-        
         .section {
             background: white;
-            border-radius: 15px;
             padding: 30px;
+            border-radius: 15px;
             margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
         .section h2 {
             color: #333;
-            font-size: 1.6em;
-            margin-bottom: 20px;
+            margin-top: 0;
             padding-bottom: 10px;
             border-bottom: 3px solid #667eea;
         }
-        
-        .links-container {
+        .links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
-        
-        .link-card {
+        .link-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
+            text-align: center;
             text-decoration: none;
             display: block;
-            transition: all 0.3s;
-            text-align: center;
+            transition: transform 0.3s;
         }
-        
-        .link-card:hover {
+        .link-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
-        
-        .link-card .icon {
-            font-size: 2.5em;
+        .link-box .icon {
+            font-size: 3em;
             margin-bottom: 10px;
-            display: block;
         }
-        
-        .link-card .title {
+        .link-box .title {
             font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-weight: bold;
         }
-        
-        .link-card .desc {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
-        
         .info-box {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
         }
-        
         .info-box h3 {
             color: #667eea;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-top: 0;
         }
-        
         .info-box p {
             color: #555;
-            margin: 0;
-            line-height: 1.6;
+            margin: 5px 0;
         }
-        
-        .events-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .events-list li {
+        .event {
             background: #f8f9fa;
-            padding: 15px 20px;
-            margin-bottom: 10px;
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 8px;
             border-left: 4px solid #667eea;
         }
-        
-        .events-list .event-title {
+        .event-title {
             color: #333;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 1.1em;
-            margin-bottom: 5px;
         }
-        
-        .events-list .event-date {
+        .event-date {
             color: #667eea;
-            font-size: 0.95em;
+            margin: 5px 0;
         }
-        
-        .events-list .event-desc {
+        .event-desc {
             color: #666;
-            margin-top: 8px;
-            line-height: 1.5;
         }
-        
-        .documents-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .documents-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .documents-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .documents-list a {
+        .doc-link {
+            display: block;
+            padding: 12px;
             color: #667eea;
             text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
+            border-bottom: 1px solid #eee;
         }
-        
-        .documents-list a:hover {
-            color: #764ba2;
+        .doc-link:hover {
+            background: #f8f9fa;
         }
-        
-        .documents-list .doc-icon {
-            margin-right: 10px;
-            font-size: 1.3em;
-        }
-        
         .footer {
             text-align: center;
             color: white;
-            margin-top: 30px;
             padding: 20px;
-            font-size: 0.95em;
-        }
-        
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .links-container {
-                grid-template-columns: 1fr;
-            }
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -219,92 +137,89 @@
             <h1>📚 ScuolaNovara</h1>
             <p>Portale aggiornamento attività e documenti</p>
         </div>
-        
+
         <div class="section">
             <h2>🔗 Link Principali</h2>
-            <div class="links-container">
-                <a href="https://drive.google.com" class="link-card" target="_blank">
-                    <span class="icon">📁</span>
+            <div class="links">
+                <a href="https://drive.google.com" class="link-box" target="_blank">
+                    <div class="icon">📁</div>
                     <div class="title">Google Drive</div>
-                    <div class="desc">Documenti condivisi</div>
+                    <div>Documenti condivisi</div>
                 </a>
-                <a href="https://calendar.google.com" class="link-card" target="_blank">
-                    <span class="icon">📅</span>
+                <a href="https://calendar.google.com" class="link-box" target="_blank">
+                    <div class="icon">📅</div>
                     <div class="title">Calendario</div>
-                    <div class="desc">Eventi e scadenze</div>
+                    <div>Eventi e scadenze</div>
                 </a>
-                <a href="https://esempio.com" class="link-card" target="_blank">
-                    <span class="icon">🎓</span>
+                <a href="#" class="link-box">
+                    <div class="icon">🎓</div>
                     <div class="title">Registro</div>
-                    <div class="desc">Accesso al registro</div>
+                    <div>Accesso registro</div>
                 </a>
-                <a href="mailto:info@scuolanovara.it" class="link-card">
-                    <span class="icon">✉️</span>
+                <a href="mailto:info@esempio.it" class="link-box">
+                    <div class="icon">✉️</div>
                     <div class="title">Email</div>
-                    <div class="desc">Contattaci</div>
+                    <div>Contattaci</div>
                 </a>
             </div>
         </div>
-        
+
         <div class="section">
             <h2>ℹ️ Informazioni Utili</h2>
             <div class="info-grid">
                 <div class="info-box">
                     <h3>📍 Sede</h3>
-                    <p>Via Esempio 123<br>28100 Novara</p>
+                    <p>Via Esempio 123</p>
+                    <p>28100 Novara</p>
                 </div>
                 <div class="info-box">
-                    <h3>🕐 Orari Segreteria</h3>
-                    <p>Lun-Ven: 8:00-14:00<br>Mar-Gio: 15:00-17:00</p>
+                    <h3>🕐 Orari</h3>
+                    <p>Lun-Ven: 8:00-14:00</p>
+                    <p>Mar-Gio: 15:00-17:00</p>
                 </div>
                 <div class="info-box">
                     <h3>📞 Contatti</h3>
-                    <p>Tel: 0321 123456<br>Email: info@scuolanovara.it</p>
+                    <p>Tel: 0321 123456</p>
+                    <p>Email: info@esempio.it</p>
                 </div>
                 <div class="info-box">
-                    <h3>🌐 Sito Web</h3>
-                    <p><a href="https://www.scuolanovara.it" style="color: #667eea; text-decoration: none;">www.scuolanovara.it</a></p>
+                    <h3>🌐 Web</h3>
+                    <p><a href="#" style="color: #667eea;">www.scuolanovara.it</a></p>
                 </div>
             </div>
         </div>
-        
+
         <div class="section">
             <h2>📌 Prossimi Eventi</h2>
-            <ul class="events-list">
-                <li>
-                    <div class="event-title">🎉 Riunione Genitori</div>
-                    <div class="event-date">Lunedì 15 Ottobre 2025 - ore 17:00</div>
-                    <div class="event-desc">Assemblea generale con presentazione del programma didattico</div>
-                </li>
-                <li>
-                    <div class="event-title">📚 Consegna Pagelle</div>
-                    <div class="event-date">Venerdì 25 Ottobre 2025</div>
-                    <div class="event-desc">Colloqui individuali con i docenti</div>
-                </li>
-                <li>
-                    <div class="event-title">🎭 Gita Scolastica</div>
-                    <div class="event-date">Sabato 2 Novembre 2025</div>
-                    <div class="event-desc">Visita al Museo della Scienza - Milano</div>
-                </li>
-            </ul>
+            <div class="event">
+                <div class="event-title">🎉 Riunione Genitori</div>
+                <div class="event-date">Lunedì 15 Ottobre 2025 - ore 17:00</div>
+                <div class="event-desc">Assemblea generale con presentazione programma didattico</div>
+            </div>
+            <div class="event">
+                <div class="event-title">📚 Consegna Pagelle</div>
+                <div class="event-date">Venerdì 25 Ottobre 2025</div>
+                <div class="event-desc">Colloqui individuali con i docenti</div>
+            </div>
+            <div class="event">
+                <div class="event-title">🎭 Gita Scolastica</div>
+                <div class="event-date">Sabato 2 Novembre 2025</div>
+                <div class="event-desc">Visita al Museo della Scienza - Milano</div>
+            </div>
         </div>
-        
+
         <div class="section">
-            <h2>📄 Documenti e Modulistica</h2>
-            <ul class="documents-list">
-                <li>
-                    <a href="#" target="_blank">
-                        <span class="doc-icon">📋</span>
-                        Regolamento d'Istituto 2024/2025
-                    </a>
-                </li>
-                <li>
-                    <a href="#" target="_blank">
-                        <span class="doc-icon">📝</span>
-                        Modulo richiesta permessi
-                    </a>
-                </li>
-                <li>
-                    <a href="#" target="_blank">
-                        <span class="doc-icon">🏥</span>
-                        Certific
+            <h2>📄 Documenti</h2>
+            <a href="#" class="doc-link">📋 Regolamento d'Istituto 2024/2025</a>
+            <a href="#" class="doc-link">📝 Modulo richiesta permessi</a>
+            <a href="#" class="doc-link">🏥 Certificati medici</a>
+            <a href="#" class="doc-link">📖 Piano dell'Offerta Formativa</a>
+            <a href="#" class="doc-link">🍎 Menu mensa</a>
+        </div>
+
+        <div class="footer">
+            <p>Ultimo aggiornamento: 3 Ottobre 2025</p>
+        </div>
+    </div>
+</body>
+</html>
